@@ -149,7 +149,10 @@ class RegistButton extends StatelessWidget {
                   SnackBar(content: Text('Regist Success')),
                   // 전화번호/ UID 별도로 DB에 넣기
                 );
-              Navigator.pop(context);
+              print(auth.currentUser?.uid);
+              print(register.hp.toString());
+              //홈으로 pop
+              Navigator.popUntil(context, ModalRoute.withName("/"));
             } else {
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()

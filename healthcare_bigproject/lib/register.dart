@@ -22,7 +22,7 @@ class RegisterModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setHp(String password) {
+  void setHp(String hp) {
     this.hp = hp;
     notifyListeners();
   }
