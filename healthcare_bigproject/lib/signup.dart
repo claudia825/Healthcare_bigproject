@@ -89,9 +89,9 @@ class _SignInState extends State<SignUp> {
           CheckBox(isChecked: _isChecked,changeChecked:changeChecked, id:1, content:'Agree'),
           CheckBox(isChecked: _isChecked,changeChecked:changeChecked, id:2, content:'Adult'),
           CheckBox(isChecked: _isChecked,changeChecked:changeChecked, id:3, content:'Agree all'),
-          TextButton(onPressed: (){
+          TextButton(onPressed: ((_isChecked[0] == true) && (_isChecked[1] == true) && (_isChecked[2] == true)) ? (){
             Navigator.push(context, MaterialPageRoute(builder: (c) => Signup1() ));
-          }, child: Text('Next'))
+          } : null, child: Text('Next'))
         ],
           
         )
@@ -114,6 +114,11 @@ class CheckBox extends StatefulWidget {
 class _CheckBoxState extends State<CheckBox> {
   @override
   Widget build(BuildContext context) {
+    if((widget.isChecked[0] == true) && (widget.isChecked[1] == true) && (widget.isChecked[2] == true)) {
+      widget.isChecked[3] = true;
+    } else {
+      widget.isChecked[3] = false;
+    }
     return Expanded(flex:1,child:
     Row(children: [Checkbox(
         value: widget.isChecked[widget.id],

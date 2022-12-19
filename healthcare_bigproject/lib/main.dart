@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './drawer.dart';
 import './waitlist.dart';
 import './maps.dart';
+import './maps2.dart';
 import './signup.dart';
 import './login.dart';
 // import 'package:flutter/cupertino.dart';
@@ -19,11 +20,13 @@ import 'firebase_options.dart';
 
 
 void main() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
+  } catch (e) {
+    print(e);
+  }
 
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 
   runApp(
       MultiProvider(
@@ -37,6 +40,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         // leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
@@ -69,7 +73,7 @@ class MyApp extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (c) => SignUp()));
             },), color: Colors.blue, width: 300, height: 100, margin: EdgeInsets.all(10),),
             Container(child: TextButton(child: Text('+ 인근 병원 대기 확인', style: TextStyle(color: Colors.white),), onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (c) => Maps()));
+              Navigator.push(context, MaterialPageRoute(builder: (c) => CurrentLocationScreen()));
             },), color: Colors.blue, width: 300, height: 100, margin: EdgeInsets.all(10),),
           ],),
         ),
