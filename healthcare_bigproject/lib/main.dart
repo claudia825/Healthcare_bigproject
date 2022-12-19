@@ -12,19 +12,34 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter/cupertino.dart'; // cupertino 스타일 가져다쓰기 위함
-import 'package:provider/provider.dart';
-
-
+import 'package:provider/provider.dart' show ChangeNotifierProvider, MultiProvider;
 import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
-void main() {
-  runApp(const MaterialApp(home: MyApp(), ));
+import 'auth.dart';
+import 'firebase_options.dart';
+
+
+void main() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
+  } catch (e) {
+    print(e);
+  }
+
+
+  runApp(
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
+          ],
+          child: const MaterialApp(home: MyApp(), )));
 }
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         // leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
