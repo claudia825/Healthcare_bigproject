@@ -19,11 +19,12 @@ import 'firebase_options.dart';
 
 
 void main() async {
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
+  } catch (e) {
+    print(e);
+  }
 
   runApp(
       MultiProvider(
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         // leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),

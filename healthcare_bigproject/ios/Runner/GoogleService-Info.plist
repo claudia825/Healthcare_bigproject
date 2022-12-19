@@ -3,21 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>756461058806-obrer1iaisk2ouc3s2grcil2b2ah42ji.apps.googleusercontent.com</string>
+	<string>1046972844884-lbcive3tksiv0649vf2a4td2r5qhngtf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.756461058806-obrer1iaisk2ouc3s2grcil2b2ah42ji</string>
+	<string>com.googleusercontent.apps.1046972844884-lbcive3tksiv0649vf2a4td2r5qhngtf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAD6cdEu-bocAJSlII80mtDZZvGfkfiylI</string>
+	<string>AIzaSyDMM87ujd2S8x2sw_d9p_5f9GGrSZSv43I</string>
 	<key>GCM_SENDER_ID</key>
-	<string>756461058806</string>
+	<string>1046972844884</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.nine.healthcare</string>
+	<string>com.example.healthcareBigproject</string>
 	<key>PROJECT_ID</key>
-	<string>healthcare-ef36e</string>
+	<string>coding-apple-juhan-fluttergram</string>
 	<key>STORAGE_BUCKET</key>
-	<string>healthcare-ef36e.appspot.com</string>
+	<string>coding-apple-juhan-fluttergram.appspot.com</string>
+
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +30,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:756461058806:ios:27bd87d05095751c828ad7</string>
+
+	<string>1:1046972844884:ios:0644d7cf22fdc0bf7796c1</string>
+
 </dict>
 </plist>
