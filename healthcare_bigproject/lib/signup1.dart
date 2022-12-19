@@ -5,6 +5,7 @@ import './main.dart';
 import './auth.dart';
 import './register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 final auth = FirebaseAuth.instance;
 
 
@@ -21,14 +22,17 @@ class Signup1 extends StatelessWidget {
             Navigator.pop(context);
           }, icon: Icon(Icons.arrow_back_ios_new),),
           title: Text('Sign Up'),),
-        body: Column(
-          children:[
-            EmailInput(),
-            PasswordInput(),
-            PasswordConfirmInput(),
-            hpInput(),
-            RegistButton()
-            ]
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children:[
+              EmailInput(),
+              PasswordInput(),
+              PasswordConfirmInput(),
+              hpInput(),
+              RegistButton()
+              ]
+          ),
         ),
       ),
     );
@@ -49,7 +53,7 @@ class EmailInput extends StatelessWidget {
         },
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          labelText: 'email',
+          labelText: 'Email',
           helperText: '',
         ),
       ),
@@ -63,37 +67,46 @@ class PasswordInput extends StatelessWidget {
     final register = Provider.of<RegisterModel>(context);
     return Container(
       padding: EdgeInsets.fromLTRB(80, 10, 80, 0),
-      child: TextField(
-        onChanged: (password) {
-          register.setPassword(password);
-        },
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.always,
         obscureText: true,
-        decoration: InputDecoration(
-          labelText: 'password',
-          helperText: '',
-          //errorText: register.password != register.passwordConfirm ? 'Password incorrect' : null,
+        decoration: const InputDecoration(
+          labelText: 'Password',
+          labelStyle: TextStyle(fontSize: 20),
         ),
+        onChanged: (password) {
+          // This optional block of code can be used to run
+          // code when the user saves the form.
+          register.password = password;
+        },
       ),
     );
   }
 }
 
 class PasswordConfirmInput extends StatelessWidget {
+  var _name;
+
   @override
   Widget build(BuildContext context) {
     final register = Provider.of<RegisterModel>(context, listen: false);
     return Container(
       padding: EdgeInsets.fromLTRB(80, 10, 80, 0),
-      child: TextField(
-        onChanged: (password) {
-          register.setPasswordConfirm(password);
-        },
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.always,
         obscureText: true,
-        decoration: InputDecoration(
-          labelText: 'password confirm',
-          helperText: '',
-          errorText: register.passwordConfirm != register.password ? 'Password incorrect' : null,
+        decoration: const InputDecoration(
+          labelText: 'Password Confirm',
+          labelStyle: TextStyle(fontSize: 20),
         ),
+        onChanged: (password) {
+          // This optional block of code can be used to run
+          // code when the user saves the form.
+          register.passwordConfirm = password;
+        },
+        validator: (String? value) {
+          return (value != register.password) ? 'Password does not match.' : null;
+        },
       ),
     );
   }
@@ -138,8 +151,8 @@ class RegistButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
         ),
-        onPressed: (register.password != register.passwordConfirm) ? null : () async {
-          await authClient
+        onPressed: ((register.password != register.passwordConfirm) || (register.password == null)) ? null : () async {
+          var user = await authClient
               .registerWithEmail(register.email, register.password)
               .then((registerStatus) {
             if (registerStatus == AuthStatus.registerSuccess) {
@@ -148,6 +161,7 @@ class RegistButton extends StatelessWidget {
                 ..showSnackBar(
                   SnackBar(content: Text('Regist Success')),
                   // 전화번호/ UID 별도로 DB에 넣기
+                  // firestore collection 만들고 규칙 정하기
                 );
               print(auth.currentUser?.uid);
               print(register.hp.toString());
