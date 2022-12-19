@@ -47,6 +47,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
+
     apiKey: 'AIzaSyAF_vaPD6VPhxRS87QvadaqoPJR8rKIqTE',
     appId: '1:331514885962:web:808462aae3bfa674a0f3b3',
     messagingSenderId: '331514885962',
@@ -71,5 +72,6 @@ class DefaultFirebaseOptions {
     storageBucket: 'healthcare-bigproject.appspot.com',
     iosClientId: '331514885962-7qdqkjenq1ioqp966357odcnjjs2r63o.apps.googleusercontent.com',
     iosBundleId: 'com.example.healthcareBigproject',
+
   );
 }
