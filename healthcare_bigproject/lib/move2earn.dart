@@ -43,11 +43,11 @@ class _M2EState extends State<M2E> {
                      )
                  ),
                  child: Row(
-                   mainAxisAlignment: MainAxisAlignment.start,
-                   crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Icon(Icons.roller_skating_rounded, color: Colors.blue), Text('2,000 걸음', style: TextStyle(fontSize: 15)
-                     ),IconButton(onPressed: (){}, icon: Icon(Icons.add_box_outlined))
+                     ),Spacer(flex: 30,),ElevatedButton(style: TextButton.styleFrom(backgroundColor: Colors.grey),
+                         onPressed: () {}, child: Text("1 포인트"),
+                       ),
                    ],
                  ),
                ),
@@ -64,10 +64,12 @@ class _M2EState extends State<M2E> {
                  ),
                  child: Row(
                    mainAxisAlignment: MainAxisAlignment.start,
-                   crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Icon(Icons.roller_skating_rounded, color: Colors.blue), Text('5,000 걸음', style: TextStyle(fontSize: 15),
-                     ),IconButton(onPressed: (){}, icon: Icon(Icons.add_box_outlined))
+                     ),Spacer(flex: 30,),ElevatedButton(style: TextButton.styleFrom(backgroundColor: Colors.grey),
+                       onPressed: () {},
+                       child: Text("2 포인트"),
+                     ),
                    ],
                  ),
                ),
@@ -83,11 +85,13 @@ class _M2EState extends State<M2E> {
                      )
                  ),
                  child: Row(
-                   mainAxisAlignment: MainAxisAlignment.start,
-                   crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Icon(Icons.roller_skating_rounded, color: Colors.blue), Text('10,000 걸음', style: TextStyle(fontSize: 15)),
-                 IconButton(onPressed: (){}, icon: Icon(Icons.add_box_outlined))
+                     Spacer(flex: 30,),ElevatedButton(
+                       style: TextButton.styleFrom(backgroundColor: Colors.grey),
+                       onPressed: () {},
+                       child: Text("3 포인트"),
+                     ),
                    ],
                  ),
                ),
