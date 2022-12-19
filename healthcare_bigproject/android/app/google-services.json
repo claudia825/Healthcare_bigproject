@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "331514885962",
-    "project_id": "healthcare-bigproject",
-    "storage_bucket": "healthcare-bigproject.appspot.com"
+    "project_number": "530716333525",
+    "project_id": "healthcare-bigproject-27bbf",
+    "storage_bucket": "healthcare-bigproject-27bbf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:331514885962:android:49fa332e657be3d0a0f3b3",
+        "mobilesdk_app_id": "1:530716333525:android:87de3936871bd2b935195c",
         "android_client_info": {
           "package_name": "com.example.healthcare_bigproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "331514885962-f6alq3pna8nr3ae4v53qnh8fpdmoo4r9.apps.googleusercontent.com",
+          "client_id": "530716333525-1l6mkltuomfupfmfvanovcbqvic8oor2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCUJ-9wKSBLOm5Y18JTO9SIMcHrwfF-Vr0"
+          "current_key": "AIzaSyCxqKmElLgPgHQSFH69ELiyg9KECfGs0gA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "331514885962-f6alq3pna8nr3ae4v53qnh8fpdmoo4r9.apps.googleusercontent.com",
+              "client_id": "530716333525-1l6mkltuomfupfmfvanovcbqvic8oor2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

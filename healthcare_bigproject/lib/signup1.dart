@@ -67,37 +67,46 @@ class PasswordInput extends StatelessWidget {
     final register = Provider.of<RegisterModel>(context);
     return Container(
       padding: EdgeInsets.fromLTRB(80, 10, 80, 0),
-      child: TextField(
-        onChanged: (password) {
-          register.setPassword(password);
-        },
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.always,
         obscureText: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           labelText: 'Password',
-          helperText: '',
-          //errorText: register.password != register.passwordConfirm ? 'Password incorrect' : null,
+          labelStyle: TextStyle(fontSize: 20),
         ),
+        onChanged: (password) {
+          // This optional block of code can be used to run
+          // code when the user saves the form.
+          register.password = password;
+        },
       ),
     );
   }
 }
 
 class PasswordConfirmInput extends StatelessWidget {
+  var _name;
+
   @override
   Widget build(BuildContext context) {
     final register = Provider.of<RegisterModel>(context, listen: false);
     return Container(
       padding: EdgeInsets.fromLTRB(80, 10, 80, 0),
-      child: TextField(
-        onChanged: (password) {
-          register.setPasswordConfirm(password);
-        },
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.always,
         obscureText: true,
-        decoration: InputDecoration(
-          labelText: 'Password confirm',
-          helperText: '',
-          errorText: register.passwordConfirm != register.password ? 'Password incorrect' : null,
+        decoration: const InputDecoration(
+          labelText: 'Password Confirm',
+          labelStyle: TextStyle(fontSize: 20),
         ),
+        onChanged: (password) {
+          // This optional block of code can be used to run
+          // code when the user saves the form.
+          register.passwordConfirm = password;
+        },
+        validator: (String? value) {
+          return (value != register.password) ? 'Password does not match.' : null;
+        },
       ),
     );
   }
@@ -142,7 +151,7 @@ class RegistButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
         ),
-        onPressed: ((register.password != register.passwordConfirm) || (register.password != null)) ? null : () async {
+        onPressed: ((register.password != register.passwordConfirm) || (register.password == null)) ? null : () async {
           var user = await authClient
               .registerWithEmail(register.email, register.password)
               .then((registerStatus) {

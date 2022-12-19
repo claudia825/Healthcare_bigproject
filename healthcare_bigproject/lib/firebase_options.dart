@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAF_vaPD6VPhxRS87QvadaqoPJR8rKIqTE',
-    appId: '1:331514885962:web:808462aae3bfa674a0f3b3',
-    messagingSenderId: '331514885962',
-    projectId: 'healthcare-bigproject',
-    authDomain: 'healthcare-bigproject.firebaseapp.com',
-    storageBucket: 'healthcare-bigproject.appspot.com',
+    apiKey: 'AIzaSyAaoHt3t1BNJYToyoDTEFzbv9WuB6ch8T0',
+    appId: '1:530716333525:web:31ab3b3fc300e57c35195c',
+    messagingSenderId: '530716333525',
+    projectId: 'healthcare-bigproject-27bbf',
+    authDomain: 'healthcare-bigproject-27bbf.firebaseapp.com',
+    storageBucket: 'healthcare-bigproject-27bbf.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCUJ-9wKSBLOm5Y18JTO9SIMcHrwfF-Vr0',
-    appId: '1:331514885962:android:49fa332e657be3d0a0f3b3',
-    messagingSenderId: '331514885962',
-    projectId: 'healthcare-bigproject',
-    storageBucket: 'healthcare-bigproject.appspot.com',
+    apiKey: 'AIzaSyCxqKmElLgPgHQSFH69ELiyg9KECfGs0gA',
+    appId: '1:530716333525:android:87de3936871bd2b935195c',
+    messagingSenderId: '530716333525',
+    projectId: 'healthcare-bigproject-27bbf',
+    storageBucket: 'healthcare-bigproject-27bbf.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCg6Mfr-1eWP8h9bRXZbrOHhlNlkGPPn1g',
-    appId: '1:331514885962:ios:9ff8bb9a7aacee4ea0f3b3',
-    messagingSenderId: '331514885962',
-    projectId: 'healthcare-bigproject',
-    storageBucket: 'healthcare-bigproject.appspot.com',
-    iosClientId: '331514885962-7qdqkjenq1ioqp966357odcnjjs2r63o.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCtHDkpT4ilt3aqswfjQGuMBWYi-SuXkz8',
+    appId: '1:530716333525:ios:1896c11bca4418ff35195c',
+    messagingSenderId: '530716333525',
+    projectId: 'healthcare-bigproject-27bbf',
+    storageBucket: 'healthcare-bigproject-27bbf.appspot.com',
+    iosClientId: '530716333525-runfimqv1dk9o8qqjqfd4q1v0coe8sf1.apps.googleusercontent.com',
     iosBundleId: 'com.example.healthcareBigproject',
   );
 }
