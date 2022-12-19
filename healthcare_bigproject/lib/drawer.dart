@@ -15,12 +15,12 @@ class MainDrawer extends StatelessWidget {
             // Drawer의 헤더쪽에 넣을 코드
             currentAccountPicture: CircleAvatar(
               // 헤더에 넣어줄 이미지
-              backgroundImage: AssetImage('assets/bbanto.png'),
+              backgroundImage: AssetImage('assets/profile.png'),
               backgroundColor: Colors.white,
             ),
             otherAccountsPictures: [ // 다른 유저의 사진
               CircleAvatar(
-                backgroundImage: AssetImage('assets/chef.png'),
+                backgroundImage: AssetImage('assets/puppy.png'),
                 backgroundColor: Colors.white,
               ),
               // CircleAvatar(
