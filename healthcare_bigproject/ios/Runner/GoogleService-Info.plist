@@ -18,6 +18,7 @@
 	<string>coding-apple-juhan-fluttergram</string>
 	<key>STORAGE_BUCKET</key>
 	<string>coding-apple-juhan-fluttergram.appspot.com</string>
+
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +30,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
+
 	<string>1:1046972844884:ios:0644d7cf22fdc0bf7796c1</string>
+
 </dict>
 </plist>
