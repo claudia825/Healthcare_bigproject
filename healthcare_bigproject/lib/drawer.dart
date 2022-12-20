@@ -29,7 +29,7 @@ class MainDrawer extends StatelessWidget {
               // ),
             ],
 
-            accountName: Text('bbanto'),
+            accountName: Text('TestUser'),
             // @require 로 필수 : 이름
             accountEmail: Text('testEmail@test.com'),
             // @require 로 필수 : 이메일
@@ -38,7 +38,7 @@ class MainDrawer extends StatelessWidget {
             },
             decoration: BoxDecoration(
               // 데코레이션이라고 해서 박스를 꾸미기
-                color: Colors.blue,
+                color: Color(0xff498acc),
                 borderRadius: BorderRadius.only(
                   // 하단에만 적용하겠다.
                     bottomLeft: Radius.circular(40.0),

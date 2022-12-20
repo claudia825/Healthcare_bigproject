@@ -4,10 +4,10 @@ var theme = ThemeData(
 
   appBarTheme: AppBarTheme(
     color: Colors.white,
-    backgroundColor: Color(0xffB3D6FF),
-    elevation: 1,
-    actionsIconTheme: IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+    backgroundColor: Color(0xff498acc),
+    centerTitle: true,
+    elevation: 0,
+    titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
   ),
 
   textTheme: TextTheme(

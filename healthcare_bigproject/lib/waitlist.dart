@@ -31,6 +31,7 @@ class _ReservationsState extends State<Reservations> {
         appBar: AppBar(
           leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
           title: Text('예약 관리'),
+          backgroundColor: Color(0xff498acc),
           actions: [IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))],
         ),
         body: Scaffold(
@@ -38,7 +39,7 @@ class _ReservationsState extends State<Reservations> {
             title: Text('예약 상태', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
             backgroundColor: Colors.white70,
             elevation: 0,
-            leading: BackButton(color: Colors.blue),
+            leading: BackButton(color: Color(0xff498acc)),
           ),
           body: ListView.builder(
             scrollDirection: Axis.vertical,
