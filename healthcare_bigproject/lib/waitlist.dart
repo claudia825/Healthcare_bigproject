@@ -123,10 +123,11 @@ class WaitList extends StatelessWidget {
             child: Container(
                 margin: EdgeInsets.all(10),
                 alignment: Alignment.center,
-                width: double.infinity,
+                width: double.infinity -50,
                 height: 70,
                 color: Colors.white,
-                child: Text('ex) 대기 3번째입니다.')
+                child:
+                Text('ex) 대기 3번째입니다.')
             )
         )
       ],
