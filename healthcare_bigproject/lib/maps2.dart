@@ -133,7 +133,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Flutter Google Map'),
+        backgroundColor: Color(0xffB3D6FF),
+        title: Text('Flutter Google Map', style: TextStyle(color: Colors.black),),
       ),
       body: SafeArea(
         child: Stack(
@@ -149,12 +150,12 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                 _controller.complete(controller);
               },
                 padding: EdgeInsets.only(
-                    bottom:MediaQuery.of(context).size.height*0.105)
+                    bottom:MediaQuery.of(context).size.height*0.15)
             ),
             Container(
               height: MediaQuery.of(context).size.height * .1,
               decoration: BoxDecoration(
-                  color: Color(0xff82b3e3),
+                  color: Color(0xffB3D6FF),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
               ),
               child: Column(
@@ -186,7 +187,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
 
                         final add = placemarks.first;
                         address = add.locality.toString() +" "+add.administrativeArea.toString()+" "+add.subAdministrativeArea.toString()+" "+add.country.toString();
-
+                        print('********************address: ${address}');
                       });
                     },
                     child: Padding(
@@ -195,9 +196,10 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                         height: 20,
 
                         decoration: BoxDecoration(
+                            color: Color(0xffB3D6FF),
                             borderRadius: BorderRadius.circular(8)
                         ),
-                        child: Center(child: Text('Current Location' , style: TextStyle(color: Colors.black),)),
+                        child: Center(child: Text(address , style: TextStyle(color: Colors.black),)),
                       ),
                     ),
                   ),
