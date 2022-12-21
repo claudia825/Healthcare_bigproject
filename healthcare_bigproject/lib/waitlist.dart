@@ -31,7 +31,7 @@ class _ReservationsState extends State<Reservations> {
         appBar: AppBar(
           leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
           title: Text('예약 관리'),
-          backgroundColor: Color(0xff498acc),
+          backgroundColor: Color(0xff82b3e3),
           actions: [IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))],
         ),
         body: Scaffold(
