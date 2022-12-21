@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare_bigproject/searchbar.dart';
+import 'package:healthcare_bigproject/splash.dart';
 import 'package:healthcare_bigproject/waitlist.dart';
 import './drawer.dart';
 import './maps2.dart';
@@ -40,10 +41,21 @@ void main() async {
           ],
           child: MaterialApp(
             theme: style.theme,
-            home: MyApp(),
+            home: Splash(),
             //theme: style.theme,
           )));
 }
+
+class Splash extends StatelessWidget {
+  const Splash({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen();
+  }
+}
+
+
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -138,7 +150,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('  Wait List', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
+              Text('  Wait List', style: TextStyle(fontFamily: 'VarelaRound', color: Colors.black, fontSize: 20),),
               Stack(
                 children: [
                   SizedBox(
@@ -154,7 +166,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   Positioned(
                     top: 100,
-                    left: 249,
+                    left: 225,
                     child:
                     ElevatedButton(
                       onPressed: () {Navigator.push(context,
@@ -171,7 +183,7 @@ class _MyAppState extends State<MyApp> {
                             )),
                       ),
                       child: 
-                       Row(children : [Icon(Icons.add), Text('예약 현황'),]),
+                       Row(children : [Icon(Icons.add), Text('Reservations'),]),
                     ),
                   )
                 ],
@@ -214,7 +226,7 @@ class _MyAppState extends State<MyApp> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         TextButton(
-                          child: Text('+ 인근 병원 대기 확인',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
+                          child: Text('Hospitals Near Me',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
                           onPressed: (){
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (c) => CurrentLocationScreen())

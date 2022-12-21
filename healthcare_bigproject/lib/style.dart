@@ -6,16 +6,22 @@ var theme = ThemeData(
     backgroundColor: Color(0xff82b3e3),
     centerTitle: true,
     elevation: 0,
-    titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+    titleTextStyle: TextStyle(
+        fontFamily: 'VarelaRound',color: Colors.white,
+        fontWeight: FontWeight.bold, fontSize: 15),
   ),
 
   textTheme: TextTheme(
-    bodyText2: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
+    bodyText2: TextStyle(
+        fontFamily: 'VarelaRound',
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+        fontSize: 15),
   ),
 
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      textStyle: TextStyle(color: Colors.black),
+      textStyle: TextStyle(fontFamily: 'VarelaRound', color: Colors.black),
     ),
   ),
 

@@ -58,7 +58,6 @@ dependencies:
   searchbar_animation: ^0.0.4
   settings_ui: ^2.0.2
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -110,6 +109,13 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+
+    - family: VarelaRound
+      fonts:
+        - asset: assets/VarelaRound-Regular.ttf
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 dependency_overrides:
