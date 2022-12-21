@@ -109,8 +109,8 @@ class _MyAppState extends State<MyApp> {
           child: Image.asset(
             'assets/logoWhite.png',
             fit: BoxFit.scaleDown,
-            height: 30,
-            width: 200,
+            height: 90,
+            width: 120,
           ),
         ),
         backgroundColor: Color(0xff82b3e3),

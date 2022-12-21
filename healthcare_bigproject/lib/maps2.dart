@@ -133,8 +133,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Color(0xffB3D6FF),
-        title: Text('Flutter Google Map', style: TextStyle(color: Colors.black),),
+        title: Text('Flutter Google Map'),
       ),
       body: SafeArea(
         child: Stack(
@@ -150,12 +149,12 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                 _controller.complete(controller);
               },
                 padding: EdgeInsets.only(
-                    bottom:MediaQuery.of(context).size.height*0.1)
+                    bottom:MediaQuery.of(context).size.height*0.105)
             ),
             Container(
               height: MediaQuery.of(context).size.height * .1,
               decoration: BoxDecoration(
-                  color: Color(0xffB3D6FF),
+                  color: Color(0xff82b3e3),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
               ),
               child: Column(
@@ -196,7 +195,6 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                         height: 20,
 
                         decoration: BoxDecoration(
-                            color: Color(0xffB3D6FF),
                             borderRadius: BorderRadius.circular(8)
                         ),
                         child: Center(child: Text('Current Location' , style: TextStyle(color: Colors.black),)),

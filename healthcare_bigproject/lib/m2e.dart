@@ -70,7 +70,7 @@ class _M2EState extends State<M2E> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          //automaticallyImplyLeading: false,
           title: const Text('Pedometer example app'),
         ),
         body: Center(

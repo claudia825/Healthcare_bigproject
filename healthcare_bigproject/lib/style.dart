@@ -6,11 +6,11 @@ var theme = ThemeData(
     backgroundColor: Color(0xff82b3e3),
     centerTitle: true,
     elevation: 0,
-    titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+    titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
   ),
 
   textTheme: TextTheme(
-    bodyText2: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
+    bodyText2: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
   ),
 
   textButtonTheme: TextButtonThemeData(
@@ -19,11 +19,5 @@ var theme = ThemeData(
     ),
   ),
 
-
-
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    selectedItemColor: Colors.black,
-    unselectedItemColor: Colors.black54,
-  ),
 
 );
