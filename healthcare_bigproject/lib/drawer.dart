@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import './signup.dart';
 import './login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final auth = FirebaseAuth.instance;
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -51,15 +54,54 @@ class MainDrawer extends StatelessWidget {
             },
             title: Text('Settings'),
           ),
-          ListTile(
-            leading: Icon(Icons.logout, color: Colors.grey[850]),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (c) => Login()));
-            },
-            title: Text('Log in'),
-          )
+          LoginLogout(),
         ],
       ),
     );
+  }
+}
+
+class LoginLogout extends StatelessWidget {
+  const LoginLogout({Key? key}) : super(key: key);
+
+  Future signOut(context) async {
+    try {
+      print('sign out complete');
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(content: Text('LogOut Success')),);
+      return await auth.signOut();
+    } catch (e) {
+      print('sign out failed');
+      print(e.toString());
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(content: Text('LogOut Failed')),);
+      return null;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if(auth.currentUser != null) {
+      return ListTile(
+        leading: Icon(Icons.logout, color: Colors.grey[850]),
+        onTap: () {
+          signOut(context);
+          Navigator.popUntil(context, ModalRoute.withName("/"));
+        },
+        title: Text('Log Out'),
+      );
+    } else {
+      return ListTile(
+        leading: Icon(Icons.login, color: Colors.grey[850]),
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (c) => Login()));
+        },
+        title: Text('Log In'),
+      );
+    }
   }
 }
