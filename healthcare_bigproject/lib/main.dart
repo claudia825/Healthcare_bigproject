@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:healthcare_bigproject/searchbar.dart';
+import 'package:healthcare_bigproject/splash.dart';
+import 'package:healthcare_bigproject/waitlist.dart';
 import './drawer.dart';
 import './waitlist.dart';
 import './maps.dart';
@@ -48,9 +51,22 @@ void main() async {
             ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
           ],
           child: MaterialApp(
-              theme: style.theme, home: MyApp(), )));
 
+            theme: style.theme,
+            home: Splash(),
+            //theme: style.theme,
+          )));
 }
+
+class Splash extends StatelessWidget {
+  const Splash({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen();
+  }
+}
+
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -215,6 +231,7 @@ class _MyAppState extends State<MyApp> {
                 ]
             ),
 
+
             Container(
               margin: EdgeInsets.fromLTRB(10,20,10,10),
               child: Column(
@@ -257,7 +274,7 @@ class _MyAppState extends State<MyApp> {
                                   )),
                             ),
                             child:
-                            Row(children : [Icon(Icons.add), Text('예약 현황'),]),
+                            Row(children : [Icon(Icons.add), Text('Reservations'),]),
                           ),
                         )
                       ],
@@ -268,48 +285,49 @@ class _MyAppState extends State<MyApp> {
             Column(
               children: [
 
-                Container(
-                  width: double.infinity, height: 100,
-                  margin: EdgeInsets.fromLTRB(20,10,20,10),
-                  decoration: BoxDecoration(
-                    color: Color(0xa8cce2f8),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        child: Text('M2E', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
-                        onPressed: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => M2E())
-                          );
-                        },),
-                    ],
-                  ),),
-                Container(
-                  width: double.infinity, height: 100,
-                  margin: EdgeInsets.fromLTRB(20,10,20,10),
-                  decoration: BoxDecoration(
-                    color: Color(0xa8cce2f8),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        child: Text('+ 인근 병원 대기 확인',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
-                        onPressed: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => CurrentLocationScreen())
-                          );
-                        },),
-                    ],
-                  ),),
-              ],
-            ),
+
+                  Container(
+                    width: double.infinity, height: 100,
+                    margin: EdgeInsets.fromLTRB(20,10,20,10),
+                    decoration: BoxDecoration(
+                      color: Color(0xa8cce2f8),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          child: Text('M2E', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (c) => M2E())
+                            );
+                          },),
+                      ],
+                    ),),
+                  Container(
+                    width: double.infinity, height: 100,
+                    margin: EdgeInsets.fromLTRB(20,10,20,10),
+                    decoration: BoxDecoration(
+                      color: Color(0xa8cce2f8),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          child: Text('Hospitals Near Me',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (c) => CurrentLocationScreen())
+                            );
+                          },),
+                      ],
+                    ),),
+                ],
+              ),
           ],),
       ),
     );
