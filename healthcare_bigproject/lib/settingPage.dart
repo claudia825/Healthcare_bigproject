@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'privacypolicy.dart';
+import './privacyPolicy.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -54,8 +54,8 @@ class _SettingPageState extends State<SettingPage> {
             title: Text('Privacy'),
             tiles: <SettingsTile>[
               SettingsTile.navigation(
-                title: Text('Privacy Policy'),
-                onPressed: (context) {Navigator.push(context, MaterialPageRoute(builder: (c) => PrivacyPolicy()));}
+                  title: Text('Privacy Policy'),
+                  onPressed: (context) {Navigator.push(context, MaterialPageRoute(builder: (c) => PrivacyPolicy()));}
               ),
               SettingsTile.navigation(
                 title: Text('Terms of Use'),

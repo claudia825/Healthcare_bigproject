@@ -28,12 +28,17 @@ class _ReservationsState extends State<Reservations> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+        appBar: AppBar(
+          leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
+          title: Text('예약 관리'),
+          actions: [IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))],
+        ),
         body: Scaffold(
           appBar: AppBar(
-            title: Text('예약 관리'),
+            title: Text('예약 상태', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
+            backgroundColor: Colors.white70,
             elevation: 0,
-            leading: BackButton(color: Colors.white),
+            leading: BackButton(color: Colors.blue),
           ),
           body: ListView.builder(
             scrollDirection: Axis.vertical,
@@ -118,11 +123,10 @@ class WaitList extends StatelessWidget {
             child: Container(
                 margin: EdgeInsets.all(10),
                 alignment: Alignment.center,
-                width: double.infinity -50,
+                width: double.infinity,
                 height: 70,
                 color: Colors.white,
-                child:
-                Text('ex) 대기 3번째입니다.')
+                child: Text('ex) 대기 3번째입니다.')
             )
         )
       ],

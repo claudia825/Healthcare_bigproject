@@ -19,7 +19,6 @@ class _M2EState extends State<M2E> {
       drawer: MainDrawer(),
       appBar: AppBar(
         title: Text('SuperWalk'),
-        backgroundColor: Color(0xff498acc),
         actions: [IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))],
       ),
       body: Scaffold(
@@ -27,7 +26,7 @@ class _M2EState extends State<M2E> {
           title: Text('대시보드', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
           backgroundColor: Colors.white70,
           elevation: 0,
-          leading: BackButton(color: Color(0xff498acc)),
+          leading: BackButton(color: Colors.blue),
         ),
        body: ListView.builder(scrollDirection: Axis.vertical, padding: EdgeInsets.all(10), itemCount: 1, itemBuilder: (c, i) {
          return Column(

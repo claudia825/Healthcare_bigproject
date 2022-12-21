@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare_bigproject/settingPage.dart';
 import './signup.dart';
 import './login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,18 +21,18 @@ class MainDrawer extends StatelessWidget {
               backgroundImage: AssetImage('assets/profile.png'),
               backgroundColor: Colors.white,
             ),
-            // otherAccountsPictures: [ // 다른 유저의 사진
-            //   CircleAvatar(
-            //     backgroundImage: AssetImage('assets/puppy.png'),
-            //     backgroundColor: Colors.white,
-            //   ),
-            //   // CircleAvatar(
-            //   //   backgroundImage: AssetImage('assets/chef.png'),
-            //   //   backgroundColor: Colors.white,
-            //   // ),
-            // ],
+            otherAccountsPictures: [ // 다른 유저의 사진
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/puppy.png'),
+                backgroundColor: Colors.white,
+              ),
+              // CircleAvatar(
+              //   backgroundImage: AssetImage('assets/chef.png'),
+              //   backgroundColor: Colors.white,
+              // ),
+            ],
 
-            accountName: Text('TestUser'),
+            accountName: Text('bbanto'),
             // @require 로 필수 : 이름
             accountEmail: Text('testEmail@test.com'),
             // @require 로 필수 : 이메일
@@ -42,7 +41,7 @@ class MainDrawer extends StatelessWidget {
             },
             decoration: BoxDecoration(
               // 데코레이션이라고 해서 박스를 꾸미기
-                color: Color(0xff82b3e3),
+                color: Colors.blue,
                 borderRadius: BorderRadius.only(
                   // 하단에만 적용하겠다.
                     bottomLeft: Radius.circular(40.0),
@@ -51,7 +50,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings, color: Colors.grey[850]),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (c) => SettingPage()));
+              print('settings is clicked');
             },
             title: Text('Settings'),
           ),
