@@ -49,9 +49,14 @@ dependencies:
   google_sign_in: ^5.4.2
   location: ^4.4.0
   geolocator: ^8.2.0
+
   pedometer: ^3.0.0
   qr_code_scanner: ^1.0.1
   smooth_page_indicator: ^1.0.0+2
+
+  carousel_slider: ^4.2.1
+  searchbar_animation: ^0.0.4
+
 
 dev_dependencies:
   flutter_test:

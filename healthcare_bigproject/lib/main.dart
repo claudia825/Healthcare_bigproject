@@ -1,4 +1,7 @@
+import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:flutter/material.dart';
+import 'package:healthcare_bigproject/searchbar.dart';
+import 'package:healthcare_bigproject/text_styles.dart';
 import './drawer.dart';
 import './waitlist.dart';
 import './maps.dart';
@@ -16,13 +19,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart' show ChangeNotifierProvider, MultiProvider;
 import 'package:firebase_core/firebase_core.dart';
 import 'auth.dart';
+import 'carousel.dart';
 import 'firebase_options.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import './m2e.dart';
 import './qr_scanner.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 final auth = FirebaseAuth.instance;
+
+import './intro.dart';
+import 'light_color.dart';
+import 'move2earn.dart';
+import 'package:searchbar_animation/searchbar_animation.dart';
+
 
 void main() async {
   try {
@@ -32,13 +43,12 @@ void main() async {
     print(e);
   }
 
-
   runApp(
       MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
           ],
-          child: const MaterialApp(home: MyApp(), )));
+          child: MaterialApp(home: MyApp(), )));
 }
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -51,6 +61,8 @@ class _MyAppState extends State<MyApp> {
 
   var qrResult;
   final controller = PageController(viewportFraction: 0.8, keepPage: true);
+  TextEditingController textController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +102,9 @@ class _MyAppState extends State<MyApp> {
     }
 
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
+
         // leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
         title: Text('Viet Doc'),
         actions: [
@@ -101,8 +115,10 @@ class _MyAppState extends State<MyApp> {
         ],
 
       ),
+
       body: SingleChildScrollView(
         child: Container(
+/////////////////////////////
           color: Colors.black,
           margin: EdgeInsets.all(10),
           child: Column(children: [
@@ -133,10 +149,72 @@ class _MyAppState extends State<MyApp> {
                 Navigator.push(context, MaterialPageRoute(builder: (c) => Login()));
               }
             },), color: Colors.blue, width: 300, height: 100, margin: EdgeInsets.all(10),),
+
+/////////////////////////////
+          //color: Colors.black,
+          //margin: EdgeInsets.fromLTRB(20,20,20,20),
+
+          child: Column(
+            children: [
+              Stack(
+                children :[
+                  Carousel(),
+                  Positioned(child: searchBar())
+                ]
+              ),
+              Container(
+                width: 330, height: 200,
+                margin: EdgeInsets.fromLTRB(20,20,20,20),
+                decoration: BoxDecoration(
+                  color: Color(0xff94C6FF),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    WaitList(),
+                    TextButton(
+                      child: Text('예약 현황 확인하기', style: TextStyle(color: Colors.black),),
+                      onPressed: (){
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (c) => Reservations())
+                        );
+                      },),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 150, height: 150,
+                    decoration: BoxDecoration(
+                      color: Color(0xff94C6FF),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10,30,10,10),
+                    child: TextButton(child: Text('M2E', style: TextStyle(color: Colors.black),),
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (c) => M2E()));
+                      },),),
+
+                  Container(
+                    width: 150 , height: 150,
+                    decoration: BoxDecoration(
+                      color: Color(0xff94C6FF),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10,30,10,10),
+                    child: TextButton(child: Text('+ 인근 병원 대기 확인', style: TextStyle(color: Colors.black),), onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (c) => CurrentLocationScreen()));
+                    },),),
+              ],
+            )
+/////////////////////////////
           ],),
         ),
       ),
-      drawer: MainDrawer(),
     );
   }
 }
