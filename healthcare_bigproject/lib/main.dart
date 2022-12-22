@@ -1,29 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 9486418 (----)
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:healthcare_bigproject/searchbar.dart';
 import 'package:healthcare_bigproject/splash.dart';
-import 'package:healthcare_bigproject/waitlist.dart';
->>>>>>> parent of 9486418 (----)
 import './drawer.dart';
 import './waitlist.dart';
-import './maps.dart';
 import './maps2.dart';
-import './signup.dart';
-import './login.dart';
+// import './signup.dart';
+// import './login.dart';
 import 'package:flutter/cupertino.dart';
 import './style.dart' as style;
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
 import './carousel.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'dart:io';
+// import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter/cupertino.dart'; // cupertino 스타일 가져다쓰기 위함
 import 'package:provider/provider.dart' show ChangeNotifierProvider, MultiProvider;
 import 'package:firebase_core/firebase_core.dart';
@@ -36,7 +26,7 @@ import 'light_color.dart';
 import './search_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
+// import 'package:searchbar_animation/searchbar_animation.dart';
 
 
 final auth = FirebaseAuth.instance;
@@ -57,9 +47,21 @@ void main() async {
             ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
           ],
           child: MaterialApp(
-              theme: style.theme, home: MyApp(), )));
+              theme: style.theme,
+              home: Splash(), )));
 
 }
+
+class Splash extends StatelessWidget {
+  const Splash({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen();
+  }
+}
+
+
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -249,7 +251,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                         Positioned(
                           top: 100,
-                          left: 249,
+                          left: 225,
                           child:
                           ElevatedButton(
                             onPressed: () {Navigator.push(context,
@@ -266,7 +268,7 @@ class _MyAppState extends State<MyApp> {
                                   )),
                             ),
                             child:
-                            Row(children : [Icon(Icons.add), Text('예약 현황'),]),
+                            Row(children : [Icon(Icons.add), Text('Reservations'),]),
                           ),
                         )
                       ],
@@ -309,7 +311,7 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextButton(
-                        child: Text('+ 인근 병원 대기 확인',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
+                        child: Text('Hospitals Near Me',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
                         onPressed: (){
                           Navigator.push(context,
                               MaterialPageRoute(builder: (c) => CurrentLocationScreen())

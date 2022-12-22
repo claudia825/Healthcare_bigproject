@@ -29,17 +29,12 @@ class _ReservationsState extends State<Reservations> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
-          title: Text('예약 관리'),
-          actions: [IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))],
+          title: Text('My Reservations'),
+          elevation: 0,
+          leading: BackButton(color: Colors.blue),
         ),
         body: Scaffold(
-          appBar: AppBar(
-            title: Text('예약 상태', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
-            backgroundColor: Colors.white70,
-            elevation: 0,
-            leading: BackButton(color: Colors.blue),
-          ),
+
           body: ListView.builder(
             scrollDirection: Axis.vertical,
             padding: EdgeInsets.all(10),

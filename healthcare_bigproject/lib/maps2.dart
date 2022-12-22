@@ -134,7 +134,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0xffB3D6FF),
-        title: Text('Flutter Google Map', style: TextStyle(color: Colors.black),),
+        title: Text('Flutter Google Map'),
       ),
       body: SafeArea(
         child: Stack(
@@ -152,64 +152,64 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                 padding: EdgeInsets.only(
                     bottom:MediaQuery.of(context).size.height*0.15)
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * .1,
-              decoration: BoxDecoration(
-                  color: Color(0xffB3D6FF),
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: (){
-                      _getUserCurrentLocation().then((value) async {
-                        // _markers.add(
-                        //     Marker(
-                        //         markerId: const MarkerId('SomeId'),
-                        //         position: LatLng(value.latitude ,value.longitude),
-                        //         infoWindow:  InfoWindow(
-                        //             title: address
-                        //         )
-                        //     )
-                        // );
-                        final GoogleMapController controller = await _controller.future;
-
-                        CameraPosition _kGooglePlex =  CameraPosition(
-                          target: LatLng(value.latitude ,value.longitude),
-                          zoom: 14,
-                        );
-                        controller.animateCamera(CameraUpdate.newCameraPosition(_kGooglePlex));
-
-                        List<Placemark> placemarks = await placemarkFromCoordinates(value.latitude ,value.longitude);
-
-
-                        final add = placemarks.first;
-                        address = add.locality.toString() +" "+add.administrativeArea.toString()+" "+add.subAdministrativeArea.toString()+" "+add.country.toString();
-                        print('********************address: ${address}');
-                      });
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10 , horizontal: 20),
-                      child: Container(
-                        height: 20,
-
-                        decoration: BoxDecoration(
-                            color: Color(0xffB3D6FF),
-                            borderRadius: BorderRadius.circular(8)
-                        ),
-                        child: Center(child: Text(address , style: TextStyle(color: Colors.black),)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(address, style: TextStyle(color: Colors.pink),),
-                  )
-                ],
-              ),
-            )
+            // Container(
+            //   height: MediaQuery.of(context).size.height * .1,
+            //   decoration: BoxDecoration(
+            //       color: Color(0xffB3D6FF),
+            //       borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+            //   ),
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       InkWell(
+            //         onTap: (){
+            //           _getUserCurrentLocation().then((value) async {
+            //             // _markers.add(
+            //             //     Marker(
+            //             //         markerId: const MarkerId('SomeId'),
+            //             //         position: LatLng(value.latitude ,value.longitude),
+            //             //         infoWindow:  InfoWindow(
+            //             //             title: address
+            //             //         )
+            //             //     )
+            //             // );
+            //             final GoogleMapController controller = await _controller.future;
+            //
+            //             CameraPosition _kGooglePlex =  CameraPosition(
+            //               target: LatLng(value.latitude ,value.longitude),
+            //               zoom: 14,
+            //             );
+            //             controller.animateCamera(CameraUpdate.newCameraPosition(_kGooglePlex));
+            //
+            //             List<Placemark> placemarks = await placemarkFromCoordinates(value.latitude ,value.longitude);
+            //
+            //
+            //             final add = placemarks.first;
+            //             address = add.locality.toString() +" "+add.administrativeArea.toString()+" "+add.subAdministrativeArea.toString()+" "+add.country.toString();
+            //             print('********************address: ${address}');
+            //           });
+            //         },
+            //         child: Padding(
+            //           padding: const EdgeInsets.symmetric(vertical: 10 , horizontal: 20),
+            //           child: Container(
+            //             height: 20,
+            //
+            //             decoration: BoxDecoration(
+            //                 color: Color(0xffB3D6FF),
+            //                 borderRadius: BorderRadius.circular(8)
+            //             ),
+            //             child: Center(child: Text(address , style: TextStyle(color: Colors.black),)),
+            //           ),
+            //         ),
+            //       ),
+            //       Padding(
+            //         padding: const EdgeInsets.symmetric(horizontal: 20),
+            //         child: Text(address, style: TextStyle(color: Colors.pink),),
+            //       )
+            //     ],
+            //   ),
+            // )
           ],
         ),
 
