@@ -70,7 +70,7 @@ class _LoginState extends State<Login> {
                     ..hideCurrentSnackBar()
                     ..showSnackBar(
                       SnackBar(content: Text('Login Success')),);
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
                 } catch (e){
                   print('login fail: ${e}');
                   ScaffoldMessenger.of(context)
