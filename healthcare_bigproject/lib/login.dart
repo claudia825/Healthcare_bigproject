@@ -17,17 +17,12 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   var inputEmail;
-
   var inputPWD;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back_ios_new),),
-        title: Text('Log In'),),
+      appBar: AppBar(title: Text('Log In'),),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
