@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
   // 예약 DB 구축후 수정
   getAuthInfo() async {
 
-    if (auth.currentUser != null) {
+    if (await auth.currentUser != null) {
       uid = auth.currentUser?.uid;
       data = await firebase.collection('reservation').doc(uid.toString()).get();
       print(data['info']);
