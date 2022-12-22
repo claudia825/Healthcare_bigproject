@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 9486418 (----)
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:healthcare_bigproject/searchbar.dart';
 import 'package:healthcare_bigproject/splash.dart';
