@@ -5,6 +5,7 @@ import './find_password.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './main.dart';
+import './drawer.dart';
 
 final auth = FirebaseAuth.instance;
 
@@ -22,7 +23,9 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Log In'),),
+
+      appBar: AppBar(title: Text('Log In')),
+
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(

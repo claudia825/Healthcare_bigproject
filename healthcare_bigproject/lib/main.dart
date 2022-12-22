@@ -48,8 +48,10 @@ void main() async {
       ],
       child: MaterialApp(
         theme: style.theme,
-        home: SplashScreen()
-      ),));
+
+        home: SplashScreen(),
+      )));
+
 }
 
 
@@ -91,6 +93,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     getAuthInfo();
   }
 

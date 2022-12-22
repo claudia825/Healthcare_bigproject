@@ -108,7 +108,7 @@ class _LoginLogoutState extends State<LoginLogout> {
       return ListTile(
         leading: Icon(Icons.login, color: Colors.grey[850]),
         onTap: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
           setState(() {});
           },
         title: Text('Log In'),
