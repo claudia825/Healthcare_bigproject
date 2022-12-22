@@ -24,7 +24,6 @@ import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './m2e.dart';
 import './qr_scanner.dart';
-import 'light_color.dart';
 import './search_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -49,8 +48,10 @@ void main() async {
       ],
       child: MaterialApp(
         theme: style.theme,
+
         home: SplashScreen(),
       )));
+
 }
 
 
@@ -261,7 +262,7 @@ class _MyAppState extends State<MyApp> {
                               dummyPage: dummyPage),
                           Positioned(
                             top: 100,
-                            left: 249,
+                            left: 225,
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.push(

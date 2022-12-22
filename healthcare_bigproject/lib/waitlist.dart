@@ -34,12 +34,6 @@ class _ReservationsState extends State<Reservations> {
           leading: BackButton(color: Colors.blue),
         ),
         body: Scaffold(
-          appBar: AppBar(
-            title: Text('예약 상태', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
-            backgroundColor: Colors.white70,
-            elevation: 0,
-            leading: BackButton(color: Colors.blue),
-          ),
           body: ListView.builder(
             scrollDirection: Axis.vertical,
             padding: EdgeInsets.all(10),
@@ -65,7 +59,7 @@ class waitentry extends StatelessWidget {
     return Container(
       height: 200,
       margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(20),
+      //padding: EdgeInsets.all(20),
       color: Colors.white38,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -108,28 +102,3 @@ class waitlight extends StatelessWidget {
   }
 }
 
-
-class WaitList extends StatelessWidget {
-  const WaitList({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-
-      children: [
-        Text('대기 현황 Wait List', style: TextStyle(fontWeight: FontWeight.w700)),
-        SizedBox(
-            child: Container(
-                margin: EdgeInsets.all(10),
-                alignment: Alignment.center,
-                width: double.infinity,
-                height: 70,
-                color: Colors.white,
-                child: Text('ex) 대기 3번째입니다.')
-            )
-        )
-      ],
-    );
-  }
-}

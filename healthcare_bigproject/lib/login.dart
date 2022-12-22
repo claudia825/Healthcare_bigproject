@@ -18,13 +18,14 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   var inputEmail;
-
   var inputPWD;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(title: Text('Log In')),
+
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
