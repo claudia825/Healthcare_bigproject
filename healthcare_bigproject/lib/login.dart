@@ -4,6 +4,7 @@ import './signup.dart';
 import './find_password.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import './main.dart';
 
 final auth = FirebaseAuth.instance;
 
@@ -69,7 +70,7 @@ class _LoginState extends State<Login> {
                     ..hideCurrentSnackBar()
                     ..showSnackBar(
                       SnackBar(content: Text('Login Success')),);
-                  Navigator.popUntil(context, ModalRoute.withName("/"));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
                 } catch (e){
                   print('login fail: ${e}');
                   ScaffoldMessenger.of(context)

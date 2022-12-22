@@ -3,6 +3,7 @@ import './signup.dart';
 import './login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './settingPage.dart';
+import './main.dart';
 
 final auth = FirebaseAuth.instance;
 
@@ -92,7 +93,7 @@ class LoginLogout extends StatelessWidget {
         leading: Icon(Icons.logout, color: Colors.grey[850]),
         onTap: () {
           signOut(context);
-          Navigator.popUntil(context, ModalRoute.withName("/"));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
         },
         title: Text('Log Out'),
       );

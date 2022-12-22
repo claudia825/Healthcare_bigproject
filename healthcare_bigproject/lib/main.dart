@@ -103,6 +103,7 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     getAuthInfo();
+
   }
   // 예약 DB 구축후 수정
   getAuthInfo() async {
