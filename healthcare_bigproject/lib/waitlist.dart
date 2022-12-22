@@ -34,7 +34,12 @@ class _ReservationsState extends State<Reservations> {
           leading: BackButton(color: Colors.blue),
         ),
         body: Scaffold(
-
+          appBar: AppBar(
+            title: Text('예약 상태', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
+            backgroundColor: Colors.white70,
+            elevation: 0,
+            leading: BackButton(color: Colors.blue),
+          ),
           body: ListView.builder(
             scrollDirection: Axis.vertical,
             padding: EdgeInsets.all(10),

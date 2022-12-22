@@ -82,7 +82,6 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
     var hospitals = await firebase.collection('hospital_marker').snapshots().first;
     print('hospitals: ${hospitals}');
     print('length : ${hospitals.docs.length}');
-    var ls = [];
     for (var i = 0; i < hospitals.docs.length; i++) {
       _markers.add(Marker(
           markerId: MarkerId(i.toString()),
@@ -227,6 +226,7 @@ class TapToHos extends StatelessWidget {
   final data;
   @override
   Widget build(BuildContext context) {
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!data: ${data}');
     return Dialog(
         backgroundColor: Colors.transparent,
         insetPadding: EdgeInsets.all(10),

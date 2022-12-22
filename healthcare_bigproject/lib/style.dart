@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 var theme = ThemeData(
+
   appBarTheme: AppBarTheme(
     backgroundColor: Color(0xff82b3e3),
     centerTitle: true,
@@ -22,5 +24,6 @@ var theme = ThemeData(
       textStyle: TextStyle(fontFamily: 'VarelaRound', color: Colors.black),
     ),
   ),
+
 
 );
