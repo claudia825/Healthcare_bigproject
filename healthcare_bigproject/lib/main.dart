@@ -1,5 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:healthcare_bigproject/searchbar.dart';
+import 'package:healthcare_bigproject/splash.dart';
+import 'package:healthcare_bigproject/waitlist.dart';
+>>>>>>> parent of 9486418 (----)
 import './drawer.dart';
 import './waitlist.dart';
 import './maps.dart';
