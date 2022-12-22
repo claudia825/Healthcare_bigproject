@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:healthcare_bigproject/splash.dart';
 import './drawer.dart';
 import './waitlist.dart';
+import './maps.dart';
 import './maps2.dart';
 // import './signup.dart';
 // import './login.dart';
@@ -47,8 +48,7 @@ void main() async {
             ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
           ],
           child: MaterialApp(
-              theme: style.theme,
-              home: Splash(), )));
+              theme: style.theme, home: Splash(), )));
 
 }
 
@@ -76,6 +76,7 @@ class _MyAppState extends State<MyApp> {
   var uid;
   var data;
   var infoList = [];
+  var pages = [];
 
   getLocationPermission() async {
     var status = await Permission.location.status;
@@ -103,12 +104,11 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     getAuthInfo();
-
   }
   // 예약 DB 구축후 수정
   getAuthInfo() async {
 
-    if (await auth.currentUser != null) {
+    if (auth.currentUser != null) {
       uid = auth.currentUser?.uid;
       data = await firebase.collection('reservation').doc(uid.toString()).get();
       print(data['info']);
@@ -120,6 +120,34 @@ class _MyAppState extends State<MyApp> {
       }
     }
     print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!infoList: ${infoList}');
+
+    setState(() {
+      if (infoList.length != 0) {
+        pages = List.generate(
+            infoList.length,
+                (index) => Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.grey.shade300,
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              child: Container(
+                  height: 300,
+                  child: SafeArea(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text('Hospital: ${infoList[index]['hospital']}', style: TextStyle(color: Colors.black),),
+                        Text('Doctor: ${infoList[index]['doctor']}', style: TextStyle(color: Colors.black),),
+                        Text('There are ${infoList[index]['order'].toString()} people waiting in front of you.', style: TextStyle(color: Colors.black),),
+                      ],),
+                  )
+              ),
+            ));
+      }
+
+    });
   }
 
 
@@ -129,6 +157,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     final dummyPage = Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -147,30 +176,7 @@ class _MyAppState extends State<MyApp> {
             )
         ),
       );
-
-    final pages = List.generate(
-        infoList.length,
-            (index) => Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.grey.shade300,
-          ),
-          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-          child: Container(
-            height: 300,
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                Text('Hospital: ${infoList[index]['hospital']}', style: TextStyle(color: Colors.black),),
-                Text('Doctor: ${infoList[index]['doctor']}', style: TextStyle(color: Colors.black),),
-                Text('There are ${infoList[index]['order'].toString()} people waiting in front of you.', style: TextStyle(color: Colors.black),),
-              ],),
-            )
-          ),
-        ));
-    print('pages.length: ${pages.length}');
+    // print('pages.length: ${pages.length}');
 
     // QR 코드 찍고 난뒤 정보 받는 부분
     void _onPressedFAB() async { //비동기 실행으로 QR화면이 닫히기 전까지 await으로 기다리도록 한다.
@@ -235,24 +241,10 @@ class _MyAppState extends State<MyApp> {
                     Text('  Wait List', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
                     Stack(
                       children: [
-                        SizedBox(
-                          height: 150,
-                          width: double.infinity,
-                          child: PageView.builder(
-                            controller: controller,
-                            // itemCount: pages.length,
-                            itemBuilder: (_, index) {
-                              if (pages.length != 0) {
-                                return pages[index % pages.length];
-                              } else {
-                                return dummyPage;
-                              }
-                            },
-                          ),
-                        ),
+                        waitListBox(pages:pages, controller:controller, dummyPage:dummyPage),
                         Positioned(
                           top: 100,
-                          left: 225,
+                          left: 249,
                           child:
                           ElevatedButton(
                             onPressed: () {Navigator.push(context,
@@ -351,3 +343,39 @@ class PageIndicator extends StatelessWidget {
 
 
 
+class waitListBox extends StatelessWidget {
+  const waitListBox({Key? key, this.pages, this.controller, this.dummyPage}) : super(key: key);
+  final pages;
+  final controller;
+  final dummyPage;
+
+  @override
+  Widget build(BuildContext context) {
+    if (pages.length != 0){
+      return SizedBox(
+        height: 150,
+        width: double.infinity,
+        child: PageView.builder(
+          controller: controller,
+          // itemCount: pages.length,
+          itemBuilder: (_, index) {
+            return pages[index % pages.length];
+          },
+        ),
+      );
+    } else {
+      return SizedBox(
+        height: 150,
+        width: double.infinity,
+        child: PageView.builder(
+          controller: controller,
+          // itemCount: pages.length,
+          itemBuilder: (_, index) {
+            return dummyPage;
+          },
+        ),
+      );
+    }
+
+  }
+}

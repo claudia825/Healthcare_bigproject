@@ -64,9 +64,14 @@ class MainDrawer extends StatelessWidget {
   }
 }
 
-class LoginLogout extends StatelessWidget {
+class LoginLogout extends StatefulWidget {
   const LoginLogout({Key? key}) : super(key: key);
 
+  @override
+  State<LoginLogout> createState() => _LoginLogoutState();
+}
+
+class _LoginLogoutState extends State<LoginLogout> {
   Future signOut(context) async {
     try {
       print('sign out complete');
@@ -88,12 +93,14 @@ class LoginLogout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     if(auth.currentUser != null) {
       return ListTile(
         leading: Icon(Icons.logout, color: Colors.grey[850]),
         onTap: () {
           signOut(context);
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
+          setState(() {});
         },
         title: Text('Log Out'),
       );
@@ -101,10 +108,15 @@ class LoginLogout extends StatelessWidget {
       return ListTile(
         leading: Icon(Icons.login, color: Colors.grey[850]),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (c) => Login()));
-        },
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
+          setState(() {});
+          },
         title: Text('Log In'),
       );
     }
+
+
   }
+
+
 }
