@@ -62,7 +62,6 @@ class Splash extends StatelessWidget {
 }
 
 
-
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -76,6 +75,7 @@ class _MyAppState extends State<MyApp> {
   var uid;
   var data;
   var infoList = [];
+  var refreshKey = GlobalKey<RefreshIndicatorState>();
 
   getLocationPermission() async {
     var status = await Permission.location.status;
@@ -103,11 +103,13 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     getAuthInfo();
-
   }
+
+
   // 예약 DB 구축후 수정
   getAuthInfo() async {
 
+    try{
     if (auth.currentUser != null) {
       uid = auth.currentUser?.uid;
       data = await firebase.collection('reservation').doc(uid.toString()).get();
@@ -120,7 +122,9 @@ class _MyAppState extends State<MyApp> {
       }
     }
     print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!infoList: ${infoList}');
-  }
+  }  catch(error){
+      print('error!');
+  }}
 
 
 
@@ -217,112 +221,116 @@ class _MyAppState extends State<MyApp> {
           IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined)),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-                children :[
-                  carousel(),
-                  Positioned(child: searchBar())
-                ]
-            ),
+      body: RefreshIndicator(
+        onRefresh: () async { getAuthInfo(); },
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Stack(
+                  children :[
+                    carousel(),
+                    Positioned(child: searchBar())
+                  ]
+              ),
 
-            Container(
-              margin: EdgeInsets.fromLTRB(10,20,10,10),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('  Wait List', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
-                    Stack(
-                      children: [
-                        SizedBox(
-                          height: 150,
-                          width: double.infinity,
-                          child: PageView.builder(
-                            controller: controller,
-                            // itemCount: pages.length,
-                            itemBuilder: (_, index) {
-                              if (pages.length != 0) {
-                                return pages[index % pages.length];
-                              } else {
-                                return dummyPage;
-                              }
-                            },
-                          ),
-                        ),
-                        Positioned(
-                          top: 100,
-                          left: 225,
-                          child:
-                          ElevatedButton(
-                            onPressed: () {Navigator.push(context,
-                                MaterialPageRoute(builder: (c) => Reservations())
-                            );},
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                              backgroundColor:
-                              MaterialStateProperty.all<Color>(Color(0xff82b3e3)),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                    //side: BorderSide(color: Colors.red) // border line color
-                                  )),
+              Container(
+                margin: EdgeInsets.fromLTRB(10,20,10,10),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('  Wait List', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
+                      Stack(
+                        children: [
+                          SizedBox(
+                            height: 150,
+                            width: double.infinity,
+                            child: PageView.builder(
+                              controller: controller,
+                              // itemCount: pages.length,
+                              itemBuilder: (_, index) {
+                                if (pages.length != 0) {
+                                  return pages[index % pages.length];
+                                } else {
+                                  return dummyPage;
+                                }
+                              },
                             ),
-                            child:
-                            Row(children : [Icon(Icons.add), Text('Reservations'),]),
                           ),
-                        )
-                      ],
+                          Positioned(
+                            top: 100,
+                            left: 225,
+                            child:
+                            ElevatedButton(
+                              onPressed: () {Navigator.push(context,
+                                  MaterialPageRoute(builder: (c) => Reservations())
+                              );},
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor:
+                                MaterialStateProperty.all<Color>(Color(0xff82b3e3)),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
+                                      //side: BorderSide(color: Colors.red) // border line color
+                                    )),
+                              ),
+                              child:
+                              Row(children : [Icon(Icons.add), Text('Reservations'),]),
+                            ),
+                          )
+                        ],
+                      ),
+                    ] ),),
+
+
+              Column(
+                children: [
+
+                  Container(
+                    width: double.infinity, height: 100,
+                    margin: EdgeInsets.fromLTRB(20,10,20,10),
+                    decoration: BoxDecoration(
+                      color: Color(0xa8cce2f8),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ] ),),
-
-
-            Column(
-              children: [
-
-                Container(
-                  width: double.infinity, height: 100,
-                  margin: EdgeInsets.fromLTRB(20,10,20,10),
-                  decoration: BoxDecoration(
-                    color: Color(0xa8cce2f8),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        child: Text('M2E', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
-                        onPressed: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => M2E())
-                          );
-                        },),
-                    ],
-                  ),),
-                Container(
-                  width: double.infinity, height: 100,
-                  margin: EdgeInsets.fromLTRB(20,10,20,10),
-                  decoration: BoxDecoration(
-                    color: Color(0xa8cce2f8),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        child: Text('Hospitals Near Me',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
-                        onPressed: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => CurrentLocationScreen())
-                          );
-                        },),
-                    ],
-                  ),),
-              ],
-            ),
-          ],),
+                    //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          child: Text('M2E', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (c) => M2E())
+                            );
+                          },),
+                      ],
+                    ),),
+                  Container(
+                    width: double.infinity, height: 100,
+                    margin: EdgeInsets.fromLTRB(20,10,20,10),
+                    decoration: BoxDecoration(
+                      color: Color(0xa8cce2f8),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          child: Text('Hospitals Near Me',style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),),
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (c) => CurrentLocationScreen())
+                            );
+                          },),
+                      ],
+                    ),),
+                ],
+              ),
+            ],),
+        ),
       ),
     );
   }
