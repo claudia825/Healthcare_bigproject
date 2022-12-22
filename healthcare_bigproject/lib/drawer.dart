@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './signup.dart';
 import './login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import './settingPage.dart';
 
 final auth = FirebaseAuth.instance;
 
@@ -51,6 +52,7 @@ class MainDrawer extends StatelessWidget {
             leading: Icon(Icons.settings, color: Colors.grey[850]),
             onTap: () {
               print('settings is clicked');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
             },
             title: Text('Settings'),
           ),
