@@ -49,18 +49,10 @@ void main() async {
       ],
       child: MaterialApp(
         theme: style.theme,
-        home: Splash(),
+        home: SplashScreen(),
       )));
 }
 
-class Splash extends StatelessWidget {
-  const Splash({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SplashScreen();
-  }
-}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -100,6 +92,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     getAuthInfo();
   }
 
