@@ -25,7 +25,6 @@ import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './m2e.dart';
 import './qr_scanner.dart';
-import 'light_color.dart';
 import './search_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -47,7 +46,6 @@ void main() async {
     print(e);
   }
 
-
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
@@ -57,7 +55,6 @@ void main() async {
         home: MyApp(),
       )));
 }
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

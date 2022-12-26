@@ -16,7 +16,7 @@ var theme = ThemeData(
         fontFamily: 'VarelaRound',
         fontWeight: FontWeight.w500,
         color: Colors.black,
-        fontSize: 20),
+        fontSize: 15),
   ),
 
   textButtonTheme: TextButtonThemeData(
