@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:healthcare_bigproject/splash.dart';
 import './drawer.dart';
 import './waitlist.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import './maps.dart';
 import './maps2.dart';
 // import './signup.dart';
@@ -29,13 +30,16 @@ import './search_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
 // import 'package:searchbar_animation/searchbar_animation.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 final auth = FirebaseAuth.instance;
 final firebase = FirebaseFirestore.instance;
 
 void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   try {
-    WidgetsFlutterBinding.ensureInitialized();
+    // WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
@@ -43,13 +47,14 @@ void main() async {
     print(e);
   }
 
+
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
       ],
       child: MaterialApp(
         theme: style.theme,
-        home: SplashScreen(),
+        home: MyApp(),
       )));
 }
 
@@ -67,6 +72,32 @@ class _MyAppState extends State<MyApp> {
   var infoList = [];
   var pages = [];
   var refreshKey = GlobalKey<RefreshIndicatorState>();
+
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
+
+  void initialization() async {
+    // This is where you can initialize the resources needed by your app while
+    // the splash screen is displayed.  Remove the following example because
+    // delaying the user experience is a bad design practice!
+    // ignore_for_file: avoid_print
+    print('ready in 3...');
+    await Future.delayed(const Duration(seconds: 1));
+    print('ready in 2...');
+    await Future.delayed(const Duration(seconds: 1));
+    print('ready in 1...go!');
+    FlutterNativeSplash.remove();
+  }
 
   getLocationPermission() async {
     var status = await Permission.location.status;
@@ -92,7 +123,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    initialization();
     getAuthInfo();
   }
 
@@ -119,7 +150,7 @@ class _MyAppState extends State<MyApp> {
           });
         }
       }
-      print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!infoList: ${infoList}');
+      print('!!!!!!!!!!!!!!!!infoList: ${infoList}');
 
       setState(() {
         if (infoList.length != 0) {
@@ -261,7 +292,7 @@ class _MyAppState extends State<MyApp> {
                               dummyPage: dummyPage),
                           Positioned(
                             top: 100,
-                            left: 249,
+                            left: 225,
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.push(

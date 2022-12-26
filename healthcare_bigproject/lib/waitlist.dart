@@ -33,14 +33,7 @@ class _ReservationsState extends State<Reservations> {
           elevation: 0,
           leading: BackButton(color: Colors.blue),
         ),
-        body: Scaffold(
-          appBar: AppBar(
-            title: Text('예약 상태', style: TextStyle(color: Colors.black, fontSize: 18), textAlign: TextAlign.center,),
-            backgroundColor: Colors.white70,
-            elevation: 0,
-            leading: BackButton(color: Colors.blue),
-          ),
-          body: ListView.builder(
+        body: ListView.builder(
             scrollDirection: Axis.vertical,
             padding: EdgeInsets.all(10),
             itemCount: ls.length, //length로 수정
@@ -49,7 +42,7 @@ class _ReservationsState extends State<Reservations> {
             },
 
           ),
-        )
+
     );
   }
 }
@@ -65,7 +58,6 @@ class waitentry extends StatelessWidget {
     return Container(
       height: 200,
       margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(20),
       color: Colors.white38,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
