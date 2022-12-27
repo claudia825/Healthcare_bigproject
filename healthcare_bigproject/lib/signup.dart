@@ -44,35 +44,39 @@ class _SignInState extends State<SignUp> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back)),
-          title: Text('회원가입'),
+          title: Text('Privacy Policy'),
           actions: [IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))],
         ),
         body: Container(padding:EdgeInsets.all(30), color:Color.fromRGBO(
             210, 210, 210, 1.0), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Expanded(flex:1,child:Text('Privacy Policy')),
+          Expanded(flex:1,child:Text('Privacy Policy',  style: TextStyle(fontSize: 20))),
           Expanded(
             flex:3,
             child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(15,5,15,30),
               scrollDirection: Axis.vertical,
-              child: Text( "1 Description that is too long in text format(Here Data is coming from API) jdlksaf j klkjjflkdsjfkddfdfsdfds " +
-                  "2 Description that is too long in text format(Here Data is coming from API) d fsdfdsfsdfd dfdsfdsf sdfdsfsd d " +
-                  "3 Description that is too long in text format(Here Data is coming from API)  adfsfdsfdfsdfdsf   dsf dfd fds fs" +
-                  "4 Description that is too long in text format(Here Data is coming from API) dsaf dsafdfdfsd dfdsfsda fdas dsad" +
-                  "5 Description that is too long in text format(Here Data is coming from API) dsfdsfd fdsfds fds fdsf dsfds fds " +
-                  "6 Description that is too long in text format(Here Data is coming from API) asdfsdfdsf fsdf sdfsdfdsf sd dfdsf" +
-                  "7 Description that is too long in text format(Here Data is coming from API) df dsfdsfdsfdsfds df dsfds fds fsd" +
-                  "8 Description that is too long in text format(Here Data is coming from API)" +
-                  "9 Description that is too long in text format(Here Data is coming from API)" +
-                  "10 Description that is too long in text format(Here Data is coming from API)",style: TextStyle(
-                  fontSize: 16.0, color: Colors.white))
+              child: Container(
+                child: Text( "1 Description that is too long in text format(Here Data is coming from API) jdlksaf j klkjjflkdsjfkddfdfsdfds " +
+                    "2 Description that is too long in text format(Here Data is coming from API) d fsdfdsfsdfd dfdsfdsf sdfdsfsd d " +
+                    "3 Description that is too long in text format(Here Data is coming from API)  adfsfdsfdfsdfdsf   dsf dfd fds fs" +
+                    "4 Description that is too long in text format(Here Data is coming from API) dsaf dsafdfdfsd dfdsfsda fdas dsad" +
+                    "5 Description that is too long in text format(Here Data is coming from API) dsfdsfd fdsfds fds fdsf dsfds fds " +
+                    "6 Description that is too long in text format(Here Data is coming from API) asdfsdfdsf fsdf sdfsdfdsf sd dfdsf" +
+                    "7 Description that is too long in text format(Here Data is coming from API) df dsfdsfdsfdsfds df dsfds fds fsd" +
+                    "8 Description that is too long in text format(Here Data is coming from API)" +
+                    "9 Description that is too long in text format(Here Data is coming from API)" +
+                    "10 Description that is too long in text format(Here Data is coming from API)",style: TextStyle(
+                    fontSize: 16.0, color: Colors.white)),
+              )
             ),
           ),
           CheckBox(isChecked: _isChecked, changeChecked:changeChecked, id:0, content:'Agree'),
-          Expanded(flex:1,child:Text('Terms of Use')),
+          Expanded(flex:1,child:Text('Terms of Use', style: TextStyle(fontSize: 20))),
           Expanded(
             flex:3,
             child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
+                padding: EdgeInsets.all(15),
                 child: Text( "1 Description that is too long in text format(Here Data is coming from API) jdlksaf j klkjjflkdsjfkddfdfsdfds " +
                     "2 Description that is too long in text format(Here Data is coming from API) d fsdfdsfsdfd dfdsfdsf sdfdsfsd d " +
                     "3 Description that is too long in text format(Here Data is coming from API)  adfsfdsfdfsdfdsf   dsf dfd fds fs" +

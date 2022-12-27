@@ -24,13 +24,18 @@ class Signup1 extends StatelessWidget {
           title: Text('Sign Up'),),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          padding: EdgeInsets.all(10),
           child: Column(
             children:[
               EmailInput(),
               PasswordInput(),
               PasswordConfirmInput(),
               hpInput(),
-              RegistButton()
+              Container(
+                margin: EdgeInsets.fromLTRB(20,50,20,20),
+                  child: RegistButton()
+              ),
+
               ]
           ),
         ),
@@ -54,7 +59,8 @@ class EmailInput extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           labelText: 'Email',
-          helperText: '',
+          labelStyle: TextStyle(fontSize: 20),
+          //helperText: '',
         ),
       ),
     );
@@ -127,7 +133,8 @@ class hpInput extends StatelessWidget {
         obscureText: false,
         decoration: InputDecoration(
           labelText: 'H.P.',
-          helperText: '',
+          labelStyle: TextStyle(fontSize: 20),
+          //helperText: '',
         ),
       ),
     );
@@ -143,10 +150,11 @@ class RegistButton extends StatelessWidget {
     final register = Provider.of<RegisterModel>(context);
     return Container(
       padding: EdgeInsets.fromLTRB(80, 10, 80, 0),
-      width: MediaQuery.of(context).size.width * 0.7,
-      height: MediaQuery.of(context).size.height * 0.05,
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.08,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          backgroundColor: Color(0xff82b3e3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
@@ -176,7 +184,7 @@ class RegistButton extends StatelessWidget {
             }
           });
         },
-        child: Text('Regist'),
+        child: Text('Sign Up', style: TextStyle(fontSize: 20)),
       ),
     );
   }

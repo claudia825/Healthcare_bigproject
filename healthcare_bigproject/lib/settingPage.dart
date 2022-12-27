@@ -18,7 +18,7 @@ class _SettingPageState extends State<SettingPage> {
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: Text('Common'),
+            title: Text('Common', style: TextStyle(color: Color(0xff1d5c94)),),
             tiles: <SettingsTile>[
               SettingsTile.navigation(
                 title: Text('Language'),
@@ -39,7 +39,7 @@ class _SettingPageState extends State<SettingPage> {
           ),
 
           SettingsSection(
-            title: Text('Account'),
+            title: Text('Account', style: TextStyle(color: Color(0xff1d5c94))),
             tiles: <SettingsTile>[
               SettingsTile.navigation(
                 title: Text('Log Out'),
@@ -51,7 +51,7 @@ class _SettingPageState extends State<SettingPage> {
           ),
 
           SettingsSection(
-            title: Text('Privacy'),
+            title: Text('Privacy', style: TextStyle(color: Color(0xff1d5c94))),
             tiles: <SettingsTile>[
               SettingsTile.navigation(
                   title: Text('Privacy Policy'),

@@ -40,21 +40,32 @@ class _SearchResultState extends State<SearchResult> {
   }
   final controller = PageController(viewportFraction: 0.8, keepPage: true);
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Search Result')),
+      appBar: AppBar(title: Text('Search Result'), centerTitle: true, ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         controller: controller,
         child: Container(
-          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+          alignment: Alignment.center,
+          margin: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Search Result!', style: TextStyle(fontSize: 30),),
-              ResultText(data:data, searchBool: search_bool, searchText:widget.text),
+              Text('Search Result!', style: TextStyle(fontSize: 25),),
+              Container(
+                margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(5),
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ResultText(data:data, searchBool: search_bool, searchText:widget.text,)),
             ],),
         ),
       )
