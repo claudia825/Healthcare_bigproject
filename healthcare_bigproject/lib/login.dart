@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(80, 80, 80, 0),
+                margin: EdgeInsets.fromLTRB(80, 80, 80, 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(80, 20, 80, 40),
+                margin: EdgeInsets.fromLTRB(80, 20, 80, 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -61,23 +61,36 @@ class _LoginState extends State<Login> {
         ),
               // Login 버튼!! -> 같은 이메일로 구글 로그인을 시도했을 때는 User에서 자동으로 연동됨 -> email, password로 접속할 수 없음
               // 221219 -> 구글 로그인시 snackbar구성 및 화면 이동 구현 필요, 로그인 상태 유지(provider 이용), 로그인 로그아웃 상태 모든 페이지에서 알게하기
-              TextButton(onPressed: () async{
-                try {
-                  await auth.signInWithEmailAndPassword(email: inputEmail, password: inputPWD);
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(content: Text('Login Success')),);
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
-                } catch (e){
-                  print('login fail: ${e}');
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(content: Text('Login Fail')),);
-                }
-              },
-                  child: const Text('Log In', style: TextStyle(fontSize: 30),)),
+              Container(
+                margin: EdgeInsets.fromLTRB(80, 30, 80, 10),
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: MediaQuery.of(context).size.height * 0.07,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff82b3e3),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                    onPressed: () async{
+                    try {
+                      await auth.signInWithEmailAndPassword(email: inputEmail, password: inputPWD);
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(content: Text('Login Success')),);
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
+                    } catch (e){
+                      print('login fail: ${e}');
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(content: Text('Login Fail')),);
+                    }
+                },
+                    child: const Text('Log In', style: TextStyle(fontSize: 20),)),
+              ),
+
 
               Container(
                 child: Column(

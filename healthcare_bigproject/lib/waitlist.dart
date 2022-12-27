@@ -61,11 +61,11 @@ class waitentry extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             waitlight(),
-            Text('접수 시각 : ${ls[i]['접수 시각']}'),
-            Text('병원 명 : ${ls[i]['병원 명']}'),
-            Text('의사 명 : ${ls[i]['의사 명']}'),
+            Text('Time of Reservation : ${ls[i]['접수 시각']}'),
+            Text('Hospital : ${ls[i]['병원 명']}'),
+            Text('Doctor : ${ls[i]['의사 명']}'),
             OutlinedButton(
-                child: Text('취소하기'),
+                child: Text('Cancel'),
                 onPressed: () {
                   changeLs(ls[i]['id']);
                 }),
@@ -92,7 +92,7 @@ class waitlight extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          Text('000 : 대기 중  ', style: TextStyle(fontSize: 10)),
+          Text('Wait Status', style: TextStyle(fontSize: 15)),
           //대기중, 완료 등 색상 if문 처리
           Icon(
             Icons.circle,

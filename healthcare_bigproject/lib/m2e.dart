@@ -74,6 +74,7 @@ class _M2EState extends State<M2E> {
         ),
         body: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
@@ -82,31 +83,36 @@ class _M2EState extends State<M2E> {
               ),
               Text(
                 _steps,
-                style: TextStyle(fontSize: 60),
+                style: TextStyle(fontSize: 40, ), textAlign: TextAlign.center,
               ),
               Divider(
                 height: 100,
                 thickness: 0,
                 color: Colors.white,
               ),
-              Text(
-                'Pedestrian status:',
-                style: TextStyle(fontSize: 30),
-              ),
-              Icon(
-                _status == 'walking'
-                    ? Icons.directions_walk
-                    : _status == 'stopped'
-                    ? Icons.accessibility_new
-                    : Icons.error,
-                size: 100,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Pedestrian status:',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  Icon(
+                    _status == 'walking'
+                        ? Icons.directions_walk
+                        : _status == 'stopped'
+                        ? Icons.accessibility_new
+                        : Icons.error,
+                    size: 60,
+                  ),
+                ],
               ),
               Center(
                 child: Text(
                   _status,
                   style: _status == 'walking' || _status == 'stopped'
                       ? TextStyle(fontSize: 30)
-                      : TextStyle(fontSize: 20, color: Colors.red),
+                      : TextStyle(fontSize: 30, color: Colors.red),
                 ),
               )
             ],

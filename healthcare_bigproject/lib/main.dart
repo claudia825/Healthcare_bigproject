@@ -160,10 +160,11 @@ class _MyAppState extends State<MyApp> {
                     ),
                     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     child: Container(
+                        margin: EdgeInsets.fromLTRB(15,10,15,10),
                         height: 300,
                         child: SafeArea(
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
@@ -190,7 +191,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   var qrResult;
-  final controller = PageController(viewportFraction: 0.8, keepPage: true);
+  final controller = PageController(viewportFraction: 0.9, keepPage: true);
 
   @override
   Widget build(BuildContext context) {
@@ -201,6 +202,7 @@ class _MyAppState extends State<MyApp> {
       ),
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       child: Container(
+          padding: EdgeInsets.all(10),
           height: 300,
           child: SafeArea(
             child: Column(
@@ -270,7 +272,7 @@ class _MyAppState extends State<MyApp> {
             children: [
               Stack(children: [carousel(), Positioned(child: searchBar())]),
               Container(
-                margin: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                margin: EdgeInsets.fromLTRB(10, 30, 10, 0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -288,33 +290,37 @@ class _MyAppState extends State<MyApp> {
                               controller: controller,
                               dummyPage: dummyPage),
                           Positioned(
-                            top: 100,
-                            left: 225,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (c) => Reservations()));
-                              },
-                              style: ButtonStyle(
-                                foregroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.white),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Color(0xff82b3e3)),
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  //side: BorderSide(color: Colors.red) // border line color
-                                )),
+                            top: 125,
+                            left: 235,
+                            child: Container(
+                              width: 120,
+                              height: 25,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (c) => Reservations()));
+                                },
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xff82b3e3)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    //side: BorderSide(color: Colors.red) // border line color
+                                  )),
+                                ),
+                                child: Row(children: [
+                                  Icon(Icons.add, size: 15),
+                                  Text('Reservations',style: TextStyle(fontSize: 12)),
+                                ]),
                               ),
-                              child: Row(children: [
-                                Icon(Icons.add),
-                                Text('Reservations'),
-                              ]),
                             ),
                           )
                         ],
