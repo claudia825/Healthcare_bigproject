@@ -1,6 +1,6 @@
 import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:flutter/material.dart';
-
+import './search_result.dart';
 
 class searchBar extends StatelessWidget {
   const searchBar({Key? key}) : super(key: key);
@@ -46,6 +46,9 @@ class searchBar extends StatelessWidget {
                   size: 20,
                   color: Colors.grey,
                 ),
+                onFieldSubmitted: (String value){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SearchResult(text:value)));
+                },
               ),
             ),
           ],

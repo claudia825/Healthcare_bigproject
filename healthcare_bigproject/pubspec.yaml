@@ -56,9 +56,9 @@ dependencies:
   carousel_slider: ^4.2.1
   searchbar_animation: ^0.0.4
   settings_ui: ^2.0.2
-#  flutter_neumorphic: ^3.0.3
-#  clay_containers: ^0.3.2
-#  neuomorphic_container: ^2.0.3
+  widget_and_text_animator: ^1.0.9
+  styled_widget: ^0.4.1
+  flutter_native_splash: ^2.2.16
 
 dev_dependencies:
   flutter_test:
