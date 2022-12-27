@@ -4,8 +4,10 @@ import './login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './settingPage.dart';
 import './main.dart';
-
+// import 'firestore'
+import 'package:cloud_firestore/cloud_firestore.dart';
 final auth = FirebaseAuth.instance;
+final firebase = FirebaseFirestore.instance;
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -99,7 +101,7 @@ class _LoginLogoutState extends State<LoginLogout> {
         leading: Icon(Icons.logout, color: Colors.grey[850]),
         onTap: () {
           signOut(context);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
+          Navigator.popUntil(context, ModalRoute.withName("/"));
           setState(() {});
         },
         title: Text('Log Out'),
@@ -114,9 +116,5 @@ class _LoginLogoutState extends State<LoginLogout> {
         title: Text('Log In'),
       );
     }
-
-
   }
-
-
 }

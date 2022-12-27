@@ -59,6 +59,8 @@ dependencies:
   widget_and_text_animator: ^1.0.9
   styled_widget: ^0.4.1
   flutter_native_splash: ^2.2.16
+  firebase_messaging: ^13.1.0
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

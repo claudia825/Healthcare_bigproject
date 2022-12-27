@@ -25,11 +25,16 @@ import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './m2e.dart';
 import './qr_scanner.dart';
+import 'light_color.dart';
 import './search_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
 // import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:styled_widget/styled_widget.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+import './notification.dart';
 
 final auth = FirebaseAuth.instance;
 final firebase = FirebaseFirestore.instance;
@@ -56,6 +61,7 @@ void main() async {
       )));
 }
 
+
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -69,7 +75,6 @@ class _MyAppState extends State<MyApp> {
   var infoList = [];
   var pages = [];
   var refreshKey = GlobalKey<RefreshIndicatorState>();
-
   int _counter = 0;
 
   void _incrementCounter() {
@@ -118,33 +123,46 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initialization();
-    getAuthInfo();
+    setState(() {
+      getAuthInfo();
+    });
+    initNotification();
   }
 
   // 예약 DB 구축후 수정
   getAuthInfo() async {
+    infoList = [];
     try {
       if (auth.currentUser != null) {
         uid = auth.currentUser?.uid;
         data =
             await firebase.collection('reservation').doc(uid.toString()).get();
         print(data['info']);
+        print(uid);
 
         for (var i = 0; i < data['info'].length; i++) {
           var doctors = await firebase
               .collection('hospital')
               .doc(data['info'][i]['hospital'].toString())
               .get();
+          print(doctors['doctor']);
+          print(data['info'][i]['doctor']);
           var order = doctors['doctor'][data['info'][i]['doctor']]['waitList']
               .indexOf(uid.toString());
+          print(order);
           infoList.add({
             'hospital': data['info'][i]['hospital'],
             'doctor': data['info'][i]['doctor'],
             'order': order
           });
+          if(order == 0) {
+            showNotification0(data['info'][i]['hospital'], data['info'][i]['doctor']);
+          } else if (order == 3) {
+            showNotification3(data['info'][i]['hospital'], data['info'][i]['doctor']);
+          }
+
         }
       }
       print('!!!!!!!!!!!!!!!!infoList: ${infoList}');
@@ -230,16 +248,17 @@ class _MyAppState extends State<MyApp> {
       }
     }
 
+    setState(() {});
+    print('rebuild!!');
     return Scaffold(
       drawer: MainDrawer(),
       appBar: AppBar(
         // leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
         title: GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MyApp()),
-            );
+            setState(() {
+
+            });
           },
           child: Image.asset(
             'assets/logoWhite.png',

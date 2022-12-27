@@ -18,14 +18,13 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   var inputEmail;
+
   var inputPWD;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(title: Text('Log In')),
-
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -63,12 +62,14 @@ class _LoginState extends State<Login> {
               // 221219 -> 구글 로그인시 snackbar구성 및 화면 이동 구현 필요, 로그인 상태 유지(provider 이용), 로그인 로그아웃 상태 모든 페이지에서 알게하기
               TextButton(onPressed: () async{
                 try {
+                  print(inputEmail);
+                  print(inputPWD);
                   await auth.signInWithEmailAndPassword(email: inputEmail, password: inputPWD);
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(
                       SnackBar(content: Text('Login Success')),);
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
+                  Navigator.popUntil(context, ModalRoute.withName("/"));
                 } catch (e){
                   print('login fail: ${e}');
                   ScaffoldMessenger.of(context)
