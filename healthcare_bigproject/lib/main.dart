@@ -28,6 +28,7 @@ import './search_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
 // import 'package:searchbar_animation/searchbar_animation.dart';
+//import 'package:neuomorphic_container/neuomorphic_container.dart';
 
 final auth = FirebaseAuth.instance;
 final firebase = FirebaseFirestore.instance;
@@ -202,6 +203,8 @@ class _MyAppState extends State<MyApp> {
         });
       }
     }
+
+
 
     return Scaffold(
       drawer: MainDrawer(),

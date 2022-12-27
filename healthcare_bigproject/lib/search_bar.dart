@@ -16,6 +16,9 @@ class searchBar extends StatelessWidget {
                 textEditingController: TextEditingController(),
                 isOriginalAnimation: true,
                 enableKeyboardFocus: true,
+                // onFieldSubmitted:(text){
+                //     print(text);
+                //   },
                 onExpansionComplete: () {
                   debugPrint(
                       'do something just after searchbox is opened.');
