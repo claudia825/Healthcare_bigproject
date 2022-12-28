@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './privacyPolicy.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final auth = FirebaseAuth.instance;
+final firebase = FirebaseFirestore.instance;
+
+Future<void> resetPassword(String email) async {
+  await auth.sendPasswordResetEmail(email: email);
+}
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -11,6 +20,7 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  var email = auth.currentUser?.email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +56,10 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile.navigation(
                 title: Text('Change Password'),
+                onPressed: (context) {
+                  print(email.toString());
+                  resetPassword(email.toString());
+                },
               ),
             ],
           ),

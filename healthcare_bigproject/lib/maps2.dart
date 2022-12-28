@@ -132,6 +132,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Color(0xffB3D6FF),
         title: Text('Flutter Google Map'),
       ),
       body: SafeArea(

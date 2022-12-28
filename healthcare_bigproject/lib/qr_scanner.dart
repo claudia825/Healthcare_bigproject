@@ -20,10 +20,7 @@ class _QRCheckScreenState extends State<QRCheckScreen> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(automaticallyImplyLeading: false, title: Text('QR Scanner'), leading: IconButton(onPressed: (){
-          controller!.dispose();
-          Navigator.pop(context, null);
-          }, icon: Icon(Icons.arrow_back))),
+        appBar: AppBar(title: Text('QR Scanner')),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -55,7 +52,7 @@ class _QRCheckScreenState extends State<QRCheckScreen> {
       this.controller = controller;
     });
 
-    controller!.resumeCamera();
+    controller.resumeCamera();
 
     controller.scannedDataStream.listen((event) {
       print('QRCheckScreen_onQRViewCreated.listen : result=${event.code}');

@@ -4,12 +4,40 @@ import './login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './settingPage.dart';
 import './main.dart';
-
+// import 'firestore'
+import 'package:cloud_firestore/cloud_firestore.dart';
 final auth = FirebaseAuth.instance;
+final firebase = FirebaseFirestore.instance;
 
-class MainDrawer extends StatelessWidget {
+class MainDrawer extends StatefulWidget {
+  @override
+  State<MainDrawer> createState() => _MainDrawerState();
+}
+
+class _MainDrawerState extends State<MainDrawer> {
+  var uid;
+  var data;
+
+  getData() {
+    data = auth.currentUser?.email;
+    print(data);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      getData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (auth.currentUser != null) {
+      uid = auth.currentUser?.uid;
+    }
+
     return Drawer(
       // 햄버거 버튼으로 사이드바 만드는 코드
       child: ListView(
@@ -34,9 +62,10 @@ class MainDrawer extends StatelessWidget {
             //   // ),
             // ],
 
-            accountName: Text('bbanto'),
+            accountName: (auth.currentUser != null) ? Text('User') : Text('Temp User'),
             // @require 로 필수 : 이름
-            accountEmail: Text('testEmail@test.com'),
+
+            accountEmail: (auth.currentUser != null) ? Text(data.toString()) : Text('Temp User'),
             // @require 로 필수 : 이메일
             onDetailsPressed: () {
               print('Header is clicked');
@@ -99,7 +128,7 @@ class _LoginLogoutState extends State<LoginLogout> {
         leading: Icon(Icons.logout, color: Colors.grey[850]),
         onTap: () {
           signOut(context);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
+          Navigator.popUntil(context, ModalRoute.withName("/"));
           setState(() {});
         },
         title: Text('Log Out'),
@@ -114,9 +143,5 @@ class _LoginLogoutState extends State<LoginLogout> {
         title: Text('Log In'),
       );
     }
-
-
   }
-
-
 }
