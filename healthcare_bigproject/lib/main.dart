@@ -35,6 +35,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import './notification.dart';
+import 'package:clay_containers/clay_containers.dart';
 
 final auth = FirebaseAuth.instance;
 final firebase = FirebaseFirestore.instance;
@@ -134,6 +135,7 @@ class _MyAppState extends State<MyApp> {
   // 예약 DB 구축후 수정
   getAuthInfo() async {
     infoList = [];
+    pages = [];
     try {
       if (auth.currentUser != null) {
         uid = auth.currentUser?.uid;
@@ -271,12 +273,12 @@ class _MyAppState extends State<MyApp> {
         ),
         backgroundColor: Color(0xff82b3e3),
         actions: [
-          IconButton(
-              onPressed: () {
-                getCameraPermission();
-                _onPressedFAB();
-              },
-              icon: Icon(Icons.qr_code_2)),
+          // IconButton(
+          //     onPressed: () {
+          //       getCameraPermission();
+          //       _onPressedFAB();
+          //     },
+          //     icon: Icon(Icons.qr_code_2)),
           IconButton(
               onPressed: () {}, icon: Icon(Icons.notifications_outlined)),
         ],
@@ -349,59 +351,99 @@ class _MyAppState extends State<MyApp> {
               Column(
                 children: [
                   Container(
-                    width: double.infinity, height: 100,
-                    margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    decoration: BoxDecoration(
-                      color: Color(0xa8cce2f8),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TextButton(
-                          child: Text(
-                            'M2E',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
+                    margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                    child: ClayContainer(
+                      curveType: CurveType.none,
+                      color: Color(0xdbddefff),
+                      depth: 30,
+                      spread: 4,
+                      borderRadius: 20,
+                      width: double.infinity, height: 100,
+                      // margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      // decoration: BoxDecoration(
+                      //   color: Color(0xa8cce2f8),
+                      //   borderRadius: BorderRadius.circular(10),
+                      // ),
+
+                      //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            child: Text(
+                              'M2E',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (c) => M2E()));
+                            },
                           ),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (c) => M2E()));
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Container(
-                    width: double.infinity, height: 100,
-                    margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    decoration: BoxDecoration(
-                      color: Color(0xa8cce2f8),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
-                    child: Column(
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        TextButton(
-                          child: Text(
-                            'Hospitals Near Me',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
+                        Container(
+                          width: 125, height: 125,
+                          child: ClayContainer(
+                          curveType: CurveType.none,
+                          color: Color(0xdbddefff), //Color(0xa8cce2f8)
+                          depth: 30,
+                          spread: 4,
+                          borderRadius: 20,
+
+                          // decoration: BoxDecoration(
+                          //   color: Color(0xa8cce2f8),
+                          //   borderRadius: BorderRadius.circular(10),
+                          // ),
+                          //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              TextButton(
+                                child: Text(
+                                  'Hospitals Near Me',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (c) => CurrentLocationScreen()));
+                                },
+                              ),
+                            ],
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (c) => CurrentLocationScreen()));
-                          },
                         ),
-                      ],
+                      ),
+                        Container(
+                          width: 125, height: 125,
+                          //color: Color(0xff94C6FF), width: 300, height: 200, margin: EdgeInsets.all(10),
+                          child: ClayContainer(
+                            curveType: CurveType.none,
+                            color: Color(0xdbddefff),
+                            depth: 30,
+                            spread: 4,
+                            borderRadius: 15,
+                            child: IconButton(
+                                onPressed: () {
+                                  getCameraPermission();
+                                  _onPressedFAB();
+                                },
+                                icon: Icon(Icons.qr_code_2, size:70)),
+                          ),
+                        ),]
                     ),
                   ),
                 ],

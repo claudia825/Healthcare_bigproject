@@ -61,6 +61,7 @@ dependencies:
   flutter_native_splash: ^2.2.16
   firebase_messaging: ^13.1.0
   get: ^4.6.5
+  clay_containers: ^0.3.2
 
 dev_dependencies:
   flutter_test:

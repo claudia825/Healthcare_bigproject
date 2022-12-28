@@ -127,15 +127,17 @@ class _LoginState extends State<Login> {
                     child: Column(
                       children: [
                         TextButton(
-                            onPressed: () {},
-                            child: Text('Start with Facebook',
-                                style: TextStyle(fontSize: 20))),
-                        TextButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xff82b3e3),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                            ),
                             onPressed: () {
                               signInWithGoogle();
                             },
                             child: Text('Start with Google',
-                                style: TextStyle(fontSize: 20)))
+                                style: TextStyle(fontSize: 15, color: Colors.white)))
                       ],
                     ),
                   ),
